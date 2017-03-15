@@ -1,0 +1,12 @@
+version: '2'
+services:
+  web:
+    build:
+      context: docker/web
+    container_name: docker_sf3_br
+    image: docker_sf3
+    ports:
+      - "8080:80"
+    tty: true
+    volumes:
+      - /Users/bronsoms/Sites/sf3-docker/:/var/www
