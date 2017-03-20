@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV COMPOSER_DISABLE_XDEBUG_WARN 1
 
 RUN apt-get update && \
-    apt-get install -y --allow-unauthenticated apache2 php7.0 php7.0-mysql libapache2-mod-php7.0 curl composer && \
+    apt-get install -y --allow-unauthenticated apache2 php7.0 php7.0-mysql php7.0-intl php7.0-xml libapache2-mod-php7.0 curl composer unzip && \
     apt-get autoremove -y && \
     apt-get clean && \
     apt-get autoclean
@@ -24,5 +24,11 @@ ENV APACHE_PID_FILE /var/run/apache2.pid
 # Expose apache.
 EXPOSE 80
 
+# Configure Virtualhost
+ADD apache/000-default.conf /etc/apache2/sites-enabled/000-default.conf
+
 # By default start up apache in the foreground, override with /bin/bash for interative.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
+
+# Set working dir
+WORKDIR /var/www
