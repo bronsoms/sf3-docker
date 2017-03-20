@@ -4,9 +4,9 @@ services:
     image: mysql:5.6.35
     environment:
       MYSQL_DATABASE: berepublic_sf3
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
-      MYSQL_ROOT_PASSWORD:  root
+      MYSQL_USER: berepublic
+      MYSQL_PASSWORD: berepublic
+      MYSQL_ROOT_PASSWORD:  berepublic
     ports:
       - 3306:3306
     volumes:
